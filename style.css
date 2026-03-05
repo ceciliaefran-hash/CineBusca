@@ -1,4 +1,4 @@
-/* Reset básico */
+*/*Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -92,7 +92,41 @@ button {
     transition: 0.3s;
 }
 
-/* Hover no botão */
-button:hover {
-    background-color: #2e59d9;
-}
+/* Estilo principal (Desktop) */
+.contenedor {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 100px auto;
+  
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+  
+  .pelicula .titulo {
+    font-size: 16px;
+  }
+  
+  /* Tablet (até 1024px) */
+  @media screen and (max-width: 1024px) {
+    .contenedor {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  
+    .pelicula .titulo {
+      font-size: 15px;
+    }
+  }
+  
+  /* Celular (até 768px) */
+  @media screen and (max-width: 768px) {
+    .contenedor {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .pelicula .titulo {
+      font-size: 14px;
+    }
+  }
