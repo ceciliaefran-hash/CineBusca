@@ -1,4 +1,4 @@
-/* Reset básico */
+/*  RESET E BASE  */
 * {
     margin: 0;
     padding: 0;
@@ -6,87 +6,116 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Fundo da página */
-body {
-    background: linear-gradient(135deg, #4e73df, #1cc88a);
-    min-height: 100vh;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Header */
+
+/*  HEADER E FOOTER  */
+header, footer {
+    background-color: #6f1d1bff !important;
+}
+
 header {
-    background-color: #6f1d1bff;
     border-bottom: 3px solid rgba(255, 255, 255, 0.2);
-}
-/* Títulos */
-h1 {
-    color: white;
+    padding: 1.5rem;
 }
 
-h2 {
-    color: #333;
+/*  CONTAINER PRINCIPAL */
+main {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
-/* Ajuste do carrossel */
-.carousel img {
-    max-height: 400px;
+/*  CARDS  */
+.card {
+    transition: 0.3s;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.card img {
+    height: 300px;
     object-fit: cover;
 }
 
-/* Texto do carrossel */
-.carousel h3 {
-    color: #222;
-}
-
-.carousel p {
-    color: #555;
+.card:hover {
+    transform: scale(1.05);
+    z-index: 5;
 }
 
 .ranking {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background: gold;
-  color: black;
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 8px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: gold;
+    color: black;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 8px;
+    z-index: 10;
 }
 
-/* Container principal */
-main {
-    background-color: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+/*  CARROSSEL */
+
+/* espaço lateral */
+#carouselFilmes {
+    position: relative;
+    padding: 0 60px !important; 
 }
 
-/* Footer */
-footer {
-    margin-top: 40px;
+/* permite hover não ser cortado */
+.carousel,
+.carousel-inner {
+    overflow: visible !important;
 }
 
-/* ========================= */
-/* RESPONSIVIDADE */
-/* ========================= */
+/* movimento contínuo */
+.carousel-item {
+    transition: transform 5s linear !important;
+}
 
-/* Tablet */
-@media screen and (max-width: 1024px) {
-    .carousel img {
-        max-height: 300px;
+/* setas */
+#carouselFilmes .carousel-control-prev,
+#carouselFilmes .carousel-control-next {
+    width: 50px;
+    opacity: 1;
+    z-index: 15;
+}
+
+#carouselFilmes .carousel-control-prev { left: 0; }
+#carouselFilmes .carousel-control-next { right: 0; }
+
+#carouselFilmes .carousel-control-prev-icon,
+#carouselFilmes .carousel-control-next-icon {
+    background-color: #6f1d1bff;
+    border-radius: 50%;
+    padding: 20px;
+    background-size: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
     }
-}
 
-/* Celular */
-@media screen and (max-width: 768px) {
-    .carousel img {
-        max-height: 220px;
+    #carouselFilmes {
+        padding: 0 40px !important;
     }
 
-    header h1 {
-        font-size: 24px;
+    .card img {
+        height: 200px;
     }
 
-    header h2 {
-        font-size: 14px;
+    #carouselFilmes .carousel-control-prev,
+    #carouselFilmes .carousel-control-next {
+        width: 40px;
     }
 }
