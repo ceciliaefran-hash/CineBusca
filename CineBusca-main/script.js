@@ -1,52 +1,69 @@
-// =========================
-// BOTÃO SINOPSE (já estava ok)
-// =========================
+// ===== BOTÃO DE SINOPSE =====
 const botao = document.querySelector("#botaoSinopse");
 const sinopse = document.querySelector("#sinopse");
 
-botao.addEventListener("click", function () {
-  if (sinopse.style.display === "none") {
-    sinopse.style.display = "block";
-    sinopse.style.color = "blue";
-  } else {
-    sinopse.style.display = "none";
-  }
-});
+// Adiciona evento apenas se existir na página
+if (botao && sinopse) {
+    botao.addEventListener("click", function () {
+        if (sinopse.style.display === "none" || sinopse.style.display === "") {
+            sinopse.style.display = "block";
+            sinopse.style.color = "blue";
+        } else {
+            sinopse.style.display = "none";
+        }
+    });
+}
 
-
-// =========================
-// BUSCAR FILMES 🔍
-// =========================
-
-// pega o formulário
-const form = document.querySelector("form");
-
-// pega o input de busca
+//  BUSCA
+const formBusca = document.querySelector("form");
 const inputBusca = document.querySelector("#busca");
 
-// pega TODOS os cards (filmes e séries)
-const cards = document.querySelectorAll(".card");
+if (formBusca) {
+    formBusca.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-form.addEventListener("submit", function (event) {
-  // 🚨 impede a página de recarregar
-  event.preventDefault();
+        const termoBusca = inputBusca.value.toLowerCase().trim();
+        const colunas = document.querySelectorAll(".col-6, .col-md-4, .col-lg-3");
 
-  // texto digitado (minúsculo)
-  const texto = inputBusca.value.toLowerCase();
+        colunas.forEach(function (coluna) {
+            const card = coluna.querySelector(".card");
+            if (!card) return;
 
-  // percorre todos os cards
-  cards.forEach(function (card) {
+            const titulo = card.innerText.toLowerCase();
+            const imagemSrc = card.querySelector("img") 
+                ? card.querySelector("img").src.toLowerCase() 
+                : "";
 
-    // pega o título do filme
-    const titulo = card.innerText.toLowerCase();
+            // Mostra ou esconde conforme a busca
+            if (titulo.includes(termoBusca) || imagemSrc.includes(termoBusca)) {
+                coluna.style.display = "block";
 
-    // verifica se contém o texto buscado
-    if (titulo.includes(texto)) {
-      card.parentElement.style.display = "block"; // mostra
-    } else {
-      card.parentElement.style.display = "none"; // esconde
+                // Ativa o slide se estiver no carousel
+                const paiCarouselItem = coluna.closest(".carousel-item");
+                if (paiCarouselItem) {
+                    paiCarouselItem.classList.add("active");
+                }
+            } else {
+                coluna.style.display = "none";
+            }
+        });
+
+        // Recarrega se a busca estiver vazia
+        if (termoBusca === "") {
+            window.location.reload();
+        }
+    });
+}
+
+//  CAROUSEL
+document.addEventListener("DOMContentLoaded", function () {
+    const meuCarrossel = document.querySelector("#carouselFilmes");
+
+    if (meuCarrossel) {
+        new bootstrap.Carousel(meuCarrossel, {
+            interval: 3000,
+            wrap: true,
+            pause: 'hover'
+        });
     }
-
-  });
-
 });
