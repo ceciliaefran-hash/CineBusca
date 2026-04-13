@@ -1,0 +1,114 @@
+/* RESET E CONFIGURAÇÕES GERAIS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+main {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    overflow: hidden;
+}
+
+header, footer {
+    background-color: #6f1d1bff !important;
+}
+
+/*CARDS */
+.card {
+    transition: 0.3s ease;
+    border: none !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-radius: 12px !important; /* Arredonda o card */
+    overflow: hidden; 
+    height: 100%;
+    background-color: #fff;
+}
+
+.card img {
+    width: 100% !important;
+    aspect-ratio: 2 / 3 !important; 
+    object-fit: contain !important; 
+    object-position: center !important; 
+    background-color: #000 !important; 
+    display: block;
+    height: auto !important;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    z-index: 5;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Legendas dos Filmes */
+.card-body {
+    padding: 12px;
+    text-align: center;
+    background-color: #fff;
+}
+
+.card-body h6 {
+    margin: 0;
+    color: #333 !important; /* Texto escuro e visível */
+    font-weight: 600;
+}
+
+/* Selo de Ranking */
+.ranking {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: gold;
+    color: black;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 8px;
+    z-index: 10;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/*CARROSSEL */
+#carouselFilmes {
+    position: relative;
+    padding: 0 60px !important; 
+    margin-bottom: 40px;
+}
+
+#Recomendacoes {
+    overflow: hidden; 
+    padding: 20px 0;
+}
+
+.carousel-inner {
+    overflow: visible !important;
+}
+
+.carousel-item {
+    transition: transform 10s linear !important;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #6f1d1bff;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    main { padding: 20px; }
+    #carouselFilmes { padding: 0 40px !important; }
+    .card img { aspect-ratio: 2 / 3 !important; }
+}
